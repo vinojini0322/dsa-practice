@@ -33,6 +33,7 @@ build/
 
 ### VS Code ###
 .vscode/
-
+workspace.xml
+uiDesigner.xml
 ### Mac OS ###
 .DS_Store
