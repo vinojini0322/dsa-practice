@@ -1,9 +1,11 @@
 package org.example.algorithm;
 
+import java.util.ArrayList;
+
 public class Recursion {
     public static void main(String[] args) {
-        int[] arr = {1,2,2,4,6,8};
-        System.out.println(findElement(arr,44 ,0));
+        int[] arr = {1, 2, 2, 2,4, 6, 8};
+        System.out.println(findElementList2(arr, 0, 2));
     }
 
     //    Sum of digits
@@ -45,7 +47,7 @@ public class Recursion {
         System.out.println(num);
     }
 
-//    Print name to n times
+    //    Print name to n times
     static void printName(int n) {
         if (n == 0) {
             return;
@@ -89,7 +91,7 @@ public class Recursion {
         }
     }
 
-//    Count zeros in a number
+    //    Count zeros in a number
     static int countZeros(int num, int count) {
         if (num == 0) {
             return count;
@@ -111,28 +113,64 @@ public class Recursion {
         rev = rev * 10 + num % 10;
         reverseNum(num / 10, rev);
     }
-//    Check whether array is sorted or not
-    static boolean isSorted(int[] arr,int i){
-        if (i==arr.length-1){
+
+    //    Check whether array is sorted or not
+    static boolean isSorted(int[] arr, int i) {
+        if (i == arr.length - 1) {
             return true;
         }
-        if(arr[i]<=arr[i+1]){
-            return isSorted(arr,i+1);
-        }else {
+        if (arr[i] <= arr[i + 1]) {
+            return isSorted(arr, i + 1);
+        } else {
             return false;
         }
     }
-//    Find an element
-static int i = 0;
-    static int findElement(int[] arr, int element ,int index){
 
-        if(index==arr.length){
+    //    Find an element
+    static int i = 0;
+
+    static int findElement(int[] arr, int element, int index) {
+
+        if (index == arr.length) {
             return -1;
         }
-        if(arr[index]==element){
+        if (arr[index] == element) {
             return index;
-        }else {
-            return findElement(arr,element,index+1);
+        } else {
+            return findElement(arr, element, index + 1);
         }
     }
+
+    //    Find element list
+    static ArrayList<Integer> elementArr = new ArrayList<>();
+
+    static ArrayList<Integer> findElementList(int[] arr, int element, int index) {
+
+        if (index == arr.length) {
+            return elementArr;
+        }
+        if (arr[index] == element) {
+            elementArr.add(index);
+        }
+            return findElementList(arr, element, index + 1);
+
+    }
+//    Find element list but do not pass storing array as an argument. Instead, create it inside function body
+
+    static ArrayList<Integer> findElementList2(int[] arr,int index,int element){
+        ArrayList<Integer> list = new ArrayList<>();
+
+        if (index == arr.length) {
+            return elementArr;
+        }
+        if (arr[index] == element) {
+            elementArr.add(index);
+        }
+        ArrayList<Integer> answerFromBelowCall = findElementList2(arr,index+1,element);
+        list.addAll(answerFromBelowCall);
+        return list;
+    }
+
+
+
 }

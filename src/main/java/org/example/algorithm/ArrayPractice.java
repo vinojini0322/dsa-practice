@@ -125,7 +125,6 @@ public class ArrayPractice {
 
             List<List<Integer>> subSet = new ArrayList<>();
             int n = arr.length;
-
             // There are 2^n subsets
             for (int i = 0; i < (1 << n); i++) {
                 List<Integer> set = new ArrayList<>();
