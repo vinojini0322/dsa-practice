@@ -55,19 +55,51 @@ public class LL {
     }
 
     public void deleteFirst() {
-        if(head.next!=null){
-            head=head.next;
-        }else {
-            head=null;
+        if (head.next != null) {
+            head = head.next;
+        } else {
+            head = null;
+            tail = null;
+        }
+        size--;
+    }
+
+    public void deleteLast() {
+        if (size <= 1) {
+            deleteFirst();
+        } else {
+            tail = getNode(size - 2);
+            tail.next = null;
         }
     }
-    public void deleteLast(){
-        Node temp = head;
-        while(temp!=null){
-            temp=temp.next;
+
+    public void deleteNodeAtIndex(int index) {
+        if (index == 0) {
+            deleteFirst();
+        } else if (index == size - 1) {
+            deleteLast();
+        } else {
+            Node temp = getNode(index - 1);
+            temp.next = temp.next.next;
         }
-        temp=null;
-        size-=1;
+    }
+
+    public Node getNodeByValue(int value){
+        Node node = head;
+        while (node!=null){
+            if(node.value==value){
+                return node;
+            }
+            node=node.next;
+        }
+        return null;
+    }
+    public Node getNode(int index) {
+        Node node = head;
+        for (int i = 0; i < index; i++) {
+            node = node.next;
+        }
+        return node;
     }
 
     public LL() {

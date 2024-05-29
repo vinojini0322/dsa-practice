@@ -8,8 +8,7 @@ public class LLMain {
         linkedList.insertAtFirst(19);
         linkedList.insertAtLast(20);
         linkedList.insertAtLast(21);
-        linkedList.displayAll();
-        linkedList.deleteFirst();
-        linkedList.displayAll();
+        System.out.println( linkedList.getNodeByValue(19));
+
     }
 }
