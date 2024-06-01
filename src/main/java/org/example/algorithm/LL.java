@@ -7,6 +7,10 @@ public class LL {
     private Node tail;
     private int size;
 
+    public LL() {
+        this.size = 0;
+    }
+//    Insert at first
     public void insertAtFirst(int val) {
         Node node = new Node(val);
         node.next = head;
@@ -16,7 +20,7 @@ public class LL {
         }
         size += 1;
     }
-
+//    Display all
     public void displayAll() {
         System.out.print(" START ");
         Node temp = head;
@@ -27,6 +31,7 @@ public class LL {
         System.out.print(" END ");
     }
 
+//    Insert at last
     public void insertAtLast(int val) {
         if (tail == null) {
             insertAtFirst(val);
@@ -38,6 +43,7 @@ public class LL {
         size += 1;
     }
 
+//    Insert at index
     public void insertAtIndex(int val, int index) {
         if (index == 0) {
             insertAtFirst(val);
@@ -54,6 +60,7 @@ public class LL {
         size += 1;
     }
 
+//    Delete first
     public void deleteFirst() {
         if (head.next != null) {
             head = head.next;
@@ -64,6 +71,7 @@ public class LL {
         size--;
     }
 
+//    Delete last
     public void deleteLast() {
         if (size <= 1) {
             deleteFirst();
@@ -73,6 +81,7 @@ public class LL {
         }
     }
 
+//    Delete at index
     public void deleteNodeAtIndex(int index) {
         if (index == 0) {
             deleteFirst();
@@ -84,16 +93,19 @@ public class LL {
         }
     }
 
-    public Node getNodeByValue(int value){
+//    Get node by value
+    public Node getNodeByValue(int value) {
         Node node = head;
-        while (node!=null){
-            if(node.value==value){
+        while (node != null) {
+            if (node.value == value) {
                 return node;
             }
-            node=node.next;
+            node = node.next;
         }
         return null;
     }
+
+//    Get node
     public Node getNode(int index) {
         Node node = head;
         for (int i = 0; i < index; i++) {
@@ -102,10 +114,10 @@ public class LL {
         return node;
     }
 
-    public LL() {
-        this.size = 0;
-    }
-
+//    Insert by recursion
+//    public void insertByRecursion(){
+//
+//    }
     private class Node {
         private int value;
         private Node next;
